@@ -1,0 +1,209 @@
+<!-- component -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script
+      defer
+      src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"
+    ></script>
+  </head>
+  <!-- component -->
+  <body class="bg-gray-100 min-h-screen">
+    <div class="bg-white p-8 rounded shadow-md max-w-md w-full mx-auto">
+      <h2 class="text-2xl font-semibold mb-4">Finances Effectively</h2>
+
+      <form action="/submit" method="POST">
+        <!-- Nom et Prénom -->
+        <div class="grid grid-cols-2 gap-4">
+          <div>
+            <label
+              for="firstName"
+              class="block text-sm font-medium text-gray-700"
+              >Budget Name</label
+            >
+            <input
+              type="text"
+              name="firstName"
+              class="mt-1 p-2 w-full border rounded-md"
+              placeholder="Enter Budget Name"
+              value="<%= user.firstName %>"
+            />
+          </div>
+          <div>
+            <label
+              for="lastName"
+              class="block text-sm font-medium text-gray-700"
+              >Transactions Type</label
+            >
+            <select
+              name="Select"
+              id="cars"
+              class="mt-1 p-2 w-full border rounded-md text-base font-medium text-gray-700"
+            >
+              <option value="Select">Select</option>
+              <option value="Income">Income</option>
+              <option value="Expense">Expense</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Adresse email -->
+        <div class="mt-4 w-full flex justify-between">
+          <div class="w-7/12">
+            <label
+              for="lastName"
+              class="block text-sm font-medium text-gray-700"
+              >All Categories</label
+            >
+            <select
+              name="SelectCat"
+              id="cars"
+              class="mt-1 p-2 w-full border rounded-md text-base font-medium text-gray-700"
+            >
+              <option value="Select">Categories</option>
+              <option value="Bills & Fees">Bills & Fees</option>
+              <option value="Beauty">Beauty</option>
+              <option value="Car">Car</option>
+              <option value="Groceries">Groceries</option>
+              <option value="Healthcare">Healthcare</option>
+              <option value="Home">Home</option>
+              <option value="Shopping">Shopping</option>
+              <option value="Travels">Travels</option>
+              <option value="Education">Education</option>
+              <option value="Entertainment">Entertainment</option>
+              <option value="Family & Personal">Family & Personal</option>
+              <option value="Food & Drink">Food & Drink</option>
+              <option value="Gifts">Gifts</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+          <div class="w-4/12">
+            <label
+              for="firstName"
+              class="block text-sm font-medium text-gray-700"
+              >Amount : ₹
+            </label>
+            <input
+              type="text"
+              id="amount"
+              name="amount"
+              class="mt-1 p-2 w-full border rounded-md"
+              placeholder="1234"
+              value="<%= user.amount %>"
+            />
+          </div>
+        </div>
+
+        <!-- Mot de passe -->
+        <div class="mt-4">
+          <label for="password" class="block text-sm font-medium text-gray-700"
+            >Description</label
+          >
+          <textarea
+            name="Description"
+            id=""
+            rows="3"
+            class="w-full mt-1 p-2 w-full border rounded-md"
+            placeholder="Type..."
+            value="<%= user.Description %>"
+          ></textarea>
+        </div>
+
+        <label for="date" class="block text-sm font-medium text-gray-700"
+          >Date</label
+        >
+        <input
+          type="date"
+          name="date"
+          id="date"
+          class="w-full mt-1 p-2 w-full border rounded-md"
+          value="<%= user.date %>"
+        />
+
+        <!-- Bouton d'inscription -->
+        <div class="mt-6">
+          <button
+            type="submit"
+            class="w-full p-3 bg-blue-500 text-white rounded-md hover:bg-blue-600"
+          >
+            Submit
+          </button>
+        </div>
+      </form>
+    </div>
+
+    <!-- table -->
+    <table class="bg-black mx-auto">
+      <thead
+        class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400"
+      >
+        <tr>
+          <th scope="col" class="px-6 py-3">Budget Name</th>
+          <th scope="col" class="px-6 py-3">Transactions Type</th>
+          <th scope="col" class="px-6 py-3">Categories</th>
+          <th scope="col" class="px-6 py-3">Amount</th>
+          <th scope="col" class="px-6 py-3">Description</th>
+          <th scope="col" class="px-6 py-3">Date</th>
+          <th scope="col" class="px-6 py-3">Edit</th>
+          <th scope="col" class="px-6 py-3">Delete</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% user.forEach((USERDATA)=>{ %>
+
+        <tr
+          class="odd:bg-white text-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-black border-b dark:border-gray-700"
+        >
+          <td class="px-6 py-4 uppercase"><%= USERDATA.Budget %></td>
+          <td class="px-6 py-4"><%= USERDATA.Transactions %></td>
+          <td class="px-6 py-4 uppercase"><%= USERDATA.category %></td>
+          <td class="px-6 py-4 uppercase"><%= USERDATA.amount %></td>
+          <td class="px-6 py-4 uppercase"><%= USERDATA.description %></td>
+          <td class="px-6 py-4 uppercase"><%= USERDATA.date %></td>
+          <td class="px-6 py-4 uppercase">
+            <a href="/editPage/<%= USERDATA._id %>">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                class="size-6"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L10.582 16.07a4.5 4.5 0 0 1-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 0 1 1.13-1.897l8.932-8.931Zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0 1 15.75 21H5.25A2.25 2.25 0 0 1 3 18.75V8.25A2.25 2.25 0 0 1 5.25 6H10"
+                />
+              </svg>
+            </a>
+          </td>
+          <td class="px-6 py-4 uppercase">
+            <a href="/deleteUser/<%= USERDATA.id %>">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                class="size-6"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="m14.74 9-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 0 1-2.244 2.077H8.084a2.25 2.25 0 0 1-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 0 0-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 0 1 3.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 0 0-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 0 0-7.5 0"
+                />
+              </svg>
+            </a>
+          </td>
+        </tr>
+
+        <% })%>
+      </tbody>
+    </table>
+  </body>
+</html>
