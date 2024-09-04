@@ -5,6 +5,14 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link
+      rel="stylesheet"
+      href="https://demos.creative-tim.com/notus-js/assets/styles/tailwind.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://demos.creative-tim.com/notus-js/assets/vendor/@fortawesome/fontawesome-free/css/all.min.css"
+    />
     <script src="https://cdn.tailwindcss.com"></script>
     <script
       defer
@@ -12,128 +20,150 @@
     ></script>
   </head>
   <!-- component -->
-  <body class="bg-gray-100 min-h-screen">
-    <div class="bg-white p-8 rounded shadow-md max-w-md w-full mx-auto">
-      <h2 class="text-2xl font-semibold mb-4">Finances Effectively</h2>
-
-      <form action="/updateUser/<%= edit.id %>" method="post">
-        <!-- Nom et Prénom -->
-        <div class="grid grid-cols-2 gap-4">
-          <div>
-            <label
-              for="firstName"
-              class="block text-sm font-medium text-gray-700"
-              >Budget Name</label
-            >
-            <input
-              type="text"
-              name="firstName"
-              class="mt-1 p-2 w-full border rounded-md"
-              placeholder="Enter Budget Name"
-              value="<%= edit.firstName %>"
-            />
-          </div>
-          <div>
-            <label
-              for="lastName"
-              class="block text-sm font-medium text-gray-700"
-              >Transactions Type</label
-            >
-            <select
-              name="Select"
-              id="cars"
-              class="mt-1 p-2 w-full border rounded-md text-base font-medium text-gray-700"
-            >
-              <option value="Select">Select</option>
-              <option value="Income">Income</option>
-              <option value="Expense">Expense</option>
-            </select>
-          </div>
-        </div>
-
-        <!-- Adresse email -->
-        <div class="mt-4 w-full flex justify-between">
-          <div class="w-7/12">
-            <label
-              for="lastName"
-              class="block text-sm font-medium text-gray-700"
-              >All Categories</label
-            >
-            <select
-              name="SelectCat"
-              id="cars"
-              class="mt-1 p-2 w-full border rounded-md text-base font-medium text-gray-700"
-            >
-              <option value="Select">Categories</option>
-              <option value="Bills & Fees">Bills & Fees</option>
-              <option value="Beauty">Beauty</option>
-              <option value="Car">Car</option>
-              <option value="Groceries">Groceries</option>
-              <option value="Healthcare">Healthcare</option>
-              <option value="Home">Home</option>
-              <option value="Shopping">Shopping</option>
-              <option value="Travels">Travels</option>
-              <option value="Education">Education</option>
-              <option value="Entertainment">Entertainment</option>
-              <option value="Family & Personal">Family & Personal</option>
-              <option value="Food & Drink">Food & Drink</option>
-              <option value="Gifts">Gifts</option>
-              <option value="Other">Other</option>
-            </select>
-          </div>
-          <div class="w-4/12">
-            <label
-              for="firstName"
-              class="block text-sm font-medium text-gray-700"
-              >Amount : ₹
-            </label>
-            <input
-              type="text"
-              id="amount"
-              name="amount"
-              class="mt-1 p-2 w-full border rounded-md"
-              placeholder="1234"
-              value="<%= edit.amount %>"
-            />
-          </div>
-        </div>
-
-        <!-- Mot de passe -->
-        <div class="mt-4">
-          <label for="password" class="block text-sm font-medium text-gray-700"
-            >Description</label
+  <body
+    class="bg-gray-100 min-h-screen bg-cover bg-center"
+    style="
+      background-image: url('./image/rupee-symbol-digital-technology-background/sl_121021_47240_08.jpg');
+      width: 100%;
+      height: 100%;
+      backdrop-filter: blur(7px);
+    "
+  >
+    <h2
+      class="text-3xl font-semibold mb-4 mx-auto inline flex justify-center"
+      style="
+        position: absolute;
+        top: 16%;
+        left: 50%;
+        transform: translate(-50%);
+      "
+    >
+      Finances Effectively
+    </h2>
+    <div
+      class="p-8 rounded shadow-2xl border max-w-md w-full mx-auto h-lvh flex justify-center items-center"
+    >
+    <form action="/updateUser/<%= edit.id %>" method="post">
+      <!-- Nom et Prénom -->
+      <div class="grid grid-cols-2 gap-4">
+        <div>
+          <label
+            for="firstName"
+            class="block text-sm font-medium text-gray-700"
+            >Budget Name</label
           >
-          <textarea
-            name="Description"
-            id=""
-            rows="3"
-            class="w-full mt-1 p-2 w-full border rounded-md"
-            placeholder="Type..."
-            value="<%= edit.description %>"
-          ></textarea>
+          <input
+            type="text"
+            name="firstName"
+            class="mt-1 p-2 w-full border rounded-md"
+            placeholder="Enter Budget Name"
+            value="<%= edit.Budget %>"
+          />
         </div>
+        <div>
+          <label
+            for="lastName"
+            class="block text-sm font-medium text-gray-700"
+            >Transactions Type</label
+          >
+          <select
+            name="Select"
+            id="cars"
+            class="mt-1 p-2 w-full border rounded-md text-base font-medium text-gray-700"
+            value="<%= edit.Transactions %>"
+          >
+            <!-- <option value="Select">Select</option> -->
+            <option value="Income" <%= edit.Transactions === 'Income' ? 'selected' : '' %>>Income</option>
+            <option value="Expense" <%= edit.Transactions === 'Expense' ? 'selected' : '' %>>Expense</option>
+          </select>
+        </div>
+      </div>
 
-        <label for="date" class="block text-sm font-medium text-gray-700"
-          >Date</label
+      <!-- Adresse email -->
+      <div class="mt-4 w-full flex justify-between">
+        <div class="w-7/12">
+          <label
+            for="lastName"
+            class="block text-sm font-medium text-gray-700"
+            >All Categories</label
+          >
+          <select
+            name="SelectCat"
+            id="cars"
+            class="mt-1 p-2 w-full border rounded-md text-base font-medium text-gray-700"
+          >
+            <option value="Select">Categories</option>
+            <option value="Bills & Fees" <%= edit.category === 'Bills & Fees' ? 'selected' : '' %>>Bills & Fees</option>
+            <option value="Beauty" <%= edit.category === 'Beauty' ? 'selected' : '' %>>Beauty</option>
+            <option value="Car" <%= edit.category === 'Car' ? 'selected' : '' %>>Car</option>
+            <option value="Groceries" <%= edit.category === 'Groceries' ? 'selected' : '' %>>Groceries</option>
+            <option value="Healthcare" <%= edit.category === 'Healthcare' ? 'selected' : '' %>>Healthcare</option>
+            <option value="Home" <%= edit.category === 'Home' ? 'selected' : '' %>>Home</option>
+            <option value="Shopping" <%= edit.category === 'Shopping' ? 'selected' : '' %>>Shopping</option>
+            <option value="Travels" <%= edit.category === 'Travels' ? 'selected' : '' %>>Travels</option>
+            <option value="Education" <%= edit.category === 'Education' ? 'selected' : '' %>>Education</option>
+            <option value="Entertainment" <%= edit.category === 'Entertainment' ? 'selected' : '' %>>Entertainment</option>
+            <option value="Family & Personal" <%= edit.category === 'Family & Personal' ? 'selected' : '' %>>Family & Personal</option>
+            <option value="Food & Drink" <%= edit.category === 'Food & Drink' ? 'selected' : '' %>>Food & Drink</option>
+            <option value="Gifts" <%= edit.category === 'Gifts' ? 'selected' : '' %>>Gifts</option>
+            <option value="Other" <%= edit.category === 'Other' ? 'selected' : '' %>>Other</option>
+          </select>
+        </div>
+        <div class="w-4/12">
+          <label
+            for="firstName"
+            class="block text-sm font-medium text-gray-700"
+            >Amount : ₹
+          </label>
+          <input
+            type="text"
+            id="amount"
+            name="amount"
+            class="mt-1 p-2 w-full border rounded-md"
+            placeholder="1234"
+            value="<%= edit.amount %>"
+          />
+        </div>
+      </div>
+
+      <!-- Mot de passe -->
+      <div class="mt-4">
+        <label for="password" class="block text-sm font-medium text-gray-700"
+          >Description</label
         >
-        <input
-          type="date"
-          name="date"
-          id="date"
+        <textarea
+          name="Description"
+          id=""
+          rows="3"
           class="w-full mt-1 p-2 w-full border rounded-md"
-          value="<%= edit.date %>"
-        />
+          placeholder="Type..."
+      
+        ><%= edit.description %></textarea>
+      </div>
 
-        <!-- Bouton d'inscription -->
-        <div class="mt-6">
-          <button
-            type="submit"
-            class="w-full p-3 bg-blue-500 text-white rounded-md hover:bg-blue-600"
-          >
-            Submit
-          </button>
-        </div>
-      </form>
+      <label for="date" class="block text-sm font-medium text-gray-700"
+        >Date</label
+      >
+      <input
+        type="date"
+        name="date"
+        id="date"
+        class="w-full mt-1 p-2 w-full border rounded-md"
+        value="<%= edit.date %>"
+      />
+
+      <!-- Bouton d'inscription -->
+      <div class="mt-6">
+        <button
+          type="submit"
+          class="w-full p-3 bg-blue-500 text-white rounded-md hover:bg-blue-600"
+        >
+          Submit
+        </button>
+      </div>
+    </form>
     </div>
+
+    
   </body>
 </html>

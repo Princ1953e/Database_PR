@@ -5,6 +5,14 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link
+      rel="stylesheet"
+      href="https://demos.creative-tim.com/notus-js/assets/styles/tailwind.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://demos.creative-tim.com/notus-js/assets/vendor/@fortawesome/fontawesome-free/css/all.min.css"
+    />
     <script src="https://cdn.tailwindcss.com"></script>
     <script
       defer
@@ -12,40 +20,58 @@
     ></script>
   </head>
   <!-- component -->
-  <body class="bg-gray-100 min-h-screen">
-    <div class="bg-white p-8 rounded shadow-md max-w-md w-full mx-auto">
-      <h2 class="text-2xl font-semibold mb-4">Finances Effectively</h2>
-
+  <body
+    class="bg-gray-100 min-h-screen bg-cover bg-center text-white"
+    style="
+      background-image: url('./image/rupee-symbol-digital-technology-background/sl_121021_47240_08.jpg');
+      width: 100%;
+      backdrop-filter: blur(7px);
+    "
+  >
+    <h2
+      class="text-3xl font-semibold mb-4 mx-auto inline flex justify-center"
+      style="
+        position: absolute;
+        top: 16%;
+        left: 50%;
+        transform: translate(-50%);
+      "
+    >
+      Finances Effectively
+    </h2>
+    <div
+      class="p-8 rounded shadow-2xl border max-w-md w-full mx-auto h-lvh flex justify-center items-center"
+    >
       <form action="/submit" method="POST">
         <!-- Nom et Prénom -->
         <div class="grid grid-cols-2 gap-4">
           <div>
-            <label
-              for="firstName"
-              class="block text-sm font-medium text-gray-700"
+            <label for="firstName" class="block text-sm font-medium text-white"
               >Budget Name</label
             >
             <input
               type="text"
               name="firstName"
-              class="mt-1 p-2 w-full border rounded-md"
+              class="mt-1 p-2 w-full border rounded-md text-gray-700"
               placeholder="Enter Budget Name"
               value="<%= user.firstName %>"
+              required
             />
           </div>
           <div>
-            <label
-              for="lastName"
-              class="block text-sm font-medium text-gray-700"
+            <label for="lastName" class="block text-sm font-medium text-white"
               >Transactions Type</label
             >
             <select
               name="Select"
               id="cars"
               class="mt-1 p-2 w-full border rounded-md text-base font-medium text-gray-700"
+              required
             >
               <option value="Select">Select</option>
-              <option value="Income">Income</option>
+              <option value="Income">
+                Income <i class="fas fa-arrow-down text-orange-500 mr-4"></i>
+              </option>
               <option value="Expense">Expense</option>
             </select>
           </div>
@@ -54,15 +80,14 @@
         <!-- Adresse email -->
         <div class="mt-4 w-full flex justify-between">
           <div class="w-7/12">
-            <label
-              for="lastName"
-              class="block text-sm font-medium text-gray-700"
+            <label for="lastName" class="block text-sm font-medium text-white"
               >All Categories</label
             >
             <select
               name="SelectCat"
               id="cars"
               class="mt-1 p-2 w-full border rounded-md text-base font-medium text-gray-700"
+              required
             >
               <option value="Select">Categories</option>
               <option value="Bills & Fees">Bills & Fees</option>
@@ -82,46 +107,47 @@
             </select>
           </div>
           <div class="w-4/12">
-            <label
-              for="firstName"
-              class="block text-sm font-medium text-gray-700"
+            <label for="firstName" class="block text-sm font-medium text-white"
               >Amount : ₹
             </label>
             <input
               type="text"
               id="amount"
               name="amount"
-              class="mt-1 p-2 w-full border rounded-md"
+              class="mt-1 p-2 w-full border rounded-md text-gray-700"
               placeholder="1234"
               value="<%= user.amount %>"
+              required
             />
           </div>
         </div>
 
         <!-- Mot de passe -->
         <div class="mt-4">
-          <label for="password" class="block text-sm font-medium text-gray-700"
+          <label for="password" class="block text-sm font-medium text-white"
             >Description</label
           >
           <textarea
             name="Description"
             id=""
             rows="3"
-            class="w-full mt-1 p-2 w-full border rounded-md"
+            class="w-full mt-1 p-2 w-full border rounded-md text-gray-700"
             placeholder="Type..."
             value="<%= user.Description %>"
+            required
           ></textarea>
         </div>
 
-        <label for="date" class="block text-sm font-medium text-gray-700"
+        <label for="date" class="block text-sm font-medium text-white"
           >Date</label
         >
         <input
           type="date"
           name="date"
           id="date"
-          class="w-full mt-1 p-2 w-full border rounded-md"
+          class="w-full mt-1 p-2 w-full border rounded-md text-gray-700"
           value="<%= user.date %>"
+          required
         />
 
         <!-- Bouton d'inscription -->
@@ -137,19 +163,19 @@
     </div>
 
     <!-- table -->
-    <table class="bg-black mx-auto">
+    <table class="bg-white mx-auto rounded-md">
       <thead
-        class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400"
+        class="text-xs text-white uppercase bg-white dark:text-gray-700 rounded-full"
       >
         <tr>
-          <th scope="col" class="px-6 py-3">Budget Name</th>
-          <th scope="col" class="px-6 py-3">Transactions Type</th>
+          <th scope="col" class="px-6 py-3 rounded-2xl">Budget Name</th>
+          <th scope="col" class="px-6 py-3 rounded-xl">Transactions Type</th>
           <th scope="col" class="px-6 py-3">Categories</th>
           <th scope="col" class="px-6 py-3">Amount</th>
           <th scope="col" class="px-6 py-3">Description</th>
           <th scope="col" class="px-6 py-3">Date</th>
           <th scope="col" class="px-6 py-3">Edit</th>
-          <th scope="col" class="px-6 py-3">Delete</th>
+          <th scope="col" class="px-6 py-3 rounded-2xl">Delete</th>
         </tr>
       </thead>
       <tbody>
@@ -158,13 +184,21 @@
         <tr
           class="odd:bg-white text-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-black border-b dark:border-gray-700"
         >
-          <td class="px-6 py-4 uppercase"><%= USERDATA.Budget %></td>
-          <td class="px-6 py-4"><%= USERDATA.Transactions %></td>
-          <td class="px-6 py-4 uppercase"><%= USERDATA.category %></td>
-          <td class="px-6 py-4 uppercase"><%= USERDATA.amount %></td>
-          <td class="px-6 py-4 uppercase"><%= USERDATA.description %></td>
-          <td class="px-6 py-4 uppercase"><%= USERDATA.date %></td>
-          <td class="px-6 py-4 uppercase">
+          <td class="px-6 py-4 text-center"><%= USERDATA.Budget %></td>
+          <td class="px-6 py-4 uppercase text-center">
+            <%= USERDATA.Transactions %>
+          </td>
+          <td class="px-6 py-4 uppercase text-center">
+            <%= USERDATA.category %>
+          </td>
+          <td class="px-6 py-4 uppercase text-center">
+            <%= USERDATA.amount %>
+          </td>
+          <td class="px-6 py-4 uppercase text-center">
+            <%= USERDATA.description %>
+          </td>
+          <td class="px-6 py-4 uppercase text-center"><%= USERDATA.date %></td>
+          <td class="px-6 py-4 uppercase text-center">
             <a href="/editPage/<%= USERDATA._id %>">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -177,12 +211,12 @@
                 <path
                   stroke-linecap="round"
                   stroke-linejoin="round"
-                  d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L10.582 16.07a4.5 4.5 0 0 1-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 0 1 1.13-1.897l8.932-8.931Zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0 1 15.75 21H5.25A2.25 2.25 0 0 1 3 18.75V8.25A2.25 2.25 0 0 1 5.25 6H10"
+                  d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L6.832 19.82a4.5 4.5 0 0 1-1.897 1.13l-2.685.8.8-2.685a4.5 4.5 0 0 1 1.13-1.897L16.863 4.487Zm0 0L19.5 7.125"
                 />
               </svg>
             </a>
           </td>
-          <td class="px-6 py-4 uppercase">
+          <td class="px-6 py-4 uppercase text-center">
             <a href="/deleteUser/<%= USERDATA.id %>">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -195,7 +229,7 @@
                 <path
                   stroke-linecap="round"
                   stroke-linejoin="round"
-                  d="m14.74 9-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 0 1-2.244 2.077H8.084a2.25 2.25 0 0 1-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 0 0-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 0 1 3.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 0 0-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 0 0-7.5 0"
+                  d="M15 12H9m12 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
                 />
               </svg>
             </a>

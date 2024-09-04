@@ -8,12 +8,12 @@ mongoose
   });
 
 const userSchema = new mongoose.Schema({
-  Budget: { type: String, required: true },
+  Budget: { type: String },
   Transactions: { type: String, require: true },
   category: { type: String, require: true },
   amount: { type: Number, require: true },
-  description: { type: String, require: true },
-  date: { type: Date },
+  description: { type: String },
+  date: { type: String },
 });
 
 module.exports = mongoose.model("User", userSchema);

@@ -1,9 +1,9 @@
 const userModal = require("../Modal/database/mongoose");
 
 const localHost = async (req, res) => {
-  const data = await userModal.find();
+  const user = await userModal.find();
 
-  res.render("index", { user: data });
+  res.render("index", { user });
 };
 
 const userSubmit = async (req, res) => {
@@ -28,12 +28,13 @@ const editUser = async (req, res) => {
 
   const userData = await userModal.findOne({ _id: id });
 
-  //   console.log("rec", recod);
+  console.log("rec", userData);
   res.render("edit", { edit: userData });
 };
 
 const updateUser = async (req, res) => {
   let { id } = req.params;
+  console.log("Jay Hooooooo...", req.body);
 
   const updateData = await userModal.findByIdAndUpdate(
     { _id: id },
@@ -49,6 +50,7 @@ const updateUser = async (req, res) => {
       new: true,
     }
   );
+
   console.log("Update", updateData);
 
   res.redirect("/");
